@@ -1,0 +1,18 @@
+server:
+  port: 8085
+  contextPath:  /
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: zhangyu
+    password: 962464
+    url: jdbc:mysql://localhost:3306/learnapp?characterEncoding=utf8&useSSL=false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+logging:
+  level: debug

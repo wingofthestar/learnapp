@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form id="form1">
+        phoneNumber: <input type="text" name="phoneNumber" id="phoneNumber"/>
+        password: <input type="password" name="password" id="password"/>
+        <input type="button" id="send" value="提交"/>
+    </form>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+//        $("#send").click(function () {
+//            alert($("#phoneNumber").val());
+//            $.get("/login",{
+//                phoneNumber:$("#phoneNumber").val(),
+//                content: $("#content").val()
+//            });
+//        })
+        $(document).ready(function () {
+            $("#send").click(function () {
+                $.ajax({
+                    url:"/login",
+                    type:"post",
+                    contentType:'application/x-www-form-urlencoded',
+                    data:{
+                        "phoneNumber":$("#phoneNumber").val(),
+                        "password":$("#password").val()
+                    },
+                    success:function () {
+                        alert("success");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
