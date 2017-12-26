@@ -42,6 +42,9 @@ public class UserInfo {
     private Collection<QuestionInfo> questionInfos;
 
     private String lastIp;
+
+    @Temporal(TemporalType.TIME)
+    private Date visitDate;
     /**
      * 0标记用户状态正常，1标记用户状态异常
      */
@@ -212,6 +215,14 @@ public class UserInfo {
 
     public void setLastIp(String lastIp) {
         this.lastIp = lastIp;
+    }
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(Date visitDate) {
+        this.visitDate = visitDate;
     }
 
     @Override

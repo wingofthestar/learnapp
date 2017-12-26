@@ -1,14 +1,8 @@
 package com.example.learnapp.service;
 
-import com.example.learnapp.entity.RegisterInfo;
-import com.example.learnapp.entity.Student;
-import com.example.learnapp.entity.Teacher;
-import com.example.learnapp.entity.UserInfo;
+import com.example.learnapp.entity.*;
 import com.example.learnapp.exception.RegisterException;
-import com.example.learnapp.repository.RegisterInfoRepository;
-import com.example.learnapp.repository.StudentRepository;
-import com.example.learnapp.repository.TeacherRepository;
-import com.example.learnapp.repository.UserInfoRepository;
+import com.example.learnapp.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +17,7 @@ public class RegisterService {
     private UserInfoRepository userInfoRepository;
     private StudentRepository studentRepository;
     private TeacherRepository teacherRepository;
+    private AdminRepository adminRepository;
 
     @Autowired
     public void setRegisterInfoRepository(RegisterInfoRepository registerInfoRepository) {
@@ -40,6 +35,10 @@ public class RegisterService {
     public void setTeacherRepository(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
     }
+    @Autowired
+    public void setAdminRepository(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+    }
 
     @Transactional
     public void register(RegisterInfo registerInfo, UserInfo userInfo, String subject) throws RegisterException {
@@ -53,11 +52,15 @@ public class RegisterService {
             Student student = new Student();
             student.setUserInfo(userInfo);
             studentRepository.save(student);
-        }else{
+        }else if (registerInfo.getRole() == 2){
             Teacher teacher = new Teacher();
             teacher.setSubject(subject);
             teacher.setUserInfo(userInfo);
             teacherRepository.save(teacher);
+        }else if (registerInfo.getRole() == 3){
+            Admin admin = new Admin();
+            admin.setUserInfo(userInfo);
+            adminRepository.save(admin);
         }
         try {
             registerInfoRepository.save(registerInfo);

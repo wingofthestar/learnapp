@@ -42,7 +42,7 @@ public class RegisterController {
             throw new RegisterException("日期转化失败，导致注册失败" + e);
         }
         //教师角色
-        if(role != 1){
+        if(role == 2){
             if(subject == null){
                 throw new RegisterException("注册失败，subject信息未填写");
             }

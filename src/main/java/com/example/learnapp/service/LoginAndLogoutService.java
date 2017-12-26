@@ -40,6 +40,7 @@ public class LoginAndLogoutService {
        if (registerInfo != null){
            UserInfo userInfo = registerInfo.getUserInfo();
            userInfo.setLastIp(ip);
+           userInfo.setVisitDate(new Date());
            userInfoRepository.save(userInfo);
            UserLoginInfo userLoginInfo = new UserLoginInfo(userInfo, ip, new Date());
            userLoginInfoRepository.save(userLoginInfo);
