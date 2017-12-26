@@ -104,7 +104,6 @@ public class QuestionInfo {
                 ", questionTitle='" + questionTitle + '\'' +
                 ", questionContent='" + questionContent + '\'' +
                 ", questionPic='" + questionPic + '\'' +
-                ", student=" + student +
                 ", answerInfo=" + answerInfo +
                 ", questionDate=" + questionDate +
                 ", subject='" + subject + '\'' +

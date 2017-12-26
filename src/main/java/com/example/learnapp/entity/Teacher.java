@@ -77,9 +77,7 @@ public class Teacher {
         return "Teacher{" +
                 "teacherId='" + teacherId + '\'' +
                 ", points=" + points +
-                ", answerNumber='" + answerNumber + '\'' +
-                ", userInfo=" + userInfo +
-                ", answerInfos=" + answerInfos +
+                ", answerNumber=" + answerNumber +
                 ", subject='" + subject + '\'' +
                 '}';
     }

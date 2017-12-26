@@ -68,9 +68,7 @@ public class AnswerInfo {
         return "AnswerInfo{" +
                 "answerInfoId='" + answerInfoId + '\'' +
                 ", answerContent='" + answerContent + '\'' +
-                ", teacher=" + teacher +
                 ", answerDate=" + answerDate +
-                ", questionInfo=" + questionInfo +
                 '}';
     }
 }

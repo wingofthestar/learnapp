@@ -34,9 +34,21 @@ public class UserInfo {
     @OneToOne(mappedBy = "userInfo")
     @JsonIgnore
     private Student student;
+    @OneToOne(mappedBy = "userInfo")
+    @JsonIgnore
+    private Admin admin;
     @OneToMany(mappedBy = "userInfo")
     @JsonIgnore
     private Collection<QuestionInfo> questionInfos;
+
+    private String lastIp;
+    /**
+     * 0标记用户状态正常，1标记用户状态异常
+     */
+    private Integer flag = 0;
+    @OneToMany(mappedBy = "userInfo")
+    @JsonIgnore
+    private Collection<UserLoginInfo> userLoginInfos;
 
     public UserInfo(String userName, String sex, Date birthday, String grade, String qqNumber,
                     String wechatNumber, String signature, String userPic) {
@@ -48,6 +60,18 @@ public class UserInfo {
         this.wechatNumber = wechatNumber;
         this.signature = signature;
         this.userPic = userPic;
+    }
+
+    public UserInfo(String userName, String sex, Date birthday, String grade, String qqNumber, String wechatNumber, String signature, String userPic, Integer flag) {
+        this.userName = userName;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.grade = grade;
+        this.qqNumber = qqNumber;
+        this.wechatNumber = wechatNumber;
+        this.signature = signature;
+        this.userPic = userPic;
+        this.flag = flag;
     }
 
     public UserInfo() {
@@ -158,6 +182,38 @@ public class UserInfo {
         this.student = student;
     }
 
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
+
+    public Collection<UserLoginInfo> getUserLoginInfos() {
+        return userLoginInfos;
+    }
+
+    public void setUserLoginInfos(Collection<UserLoginInfo> userLoginInfos) {
+        this.userLoginInfos = userLoginInfos;
+    }
+
+    public String getLastIp() {
+        return lastIp;
+    }
+
+    public void setLastIp(String lastIp) {
+        this.lastIp = lastIp;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -169,8 +225,9 @@ public class UserInfo {
                 ", qqNumber='" + qqNumber + '\'' +
                 ", wechatNumber='" + wechatNumber + '\'' +
                 ", signature='" + signature + '\'' +
-                ", registerInfo=" + registerInfo +
                 ", userPic='" + userPic + '\'' +
+                ", lastIp='" + lastIp + '\'' +
+                ", flag=" + flag +
                 '}';
     }
 }
