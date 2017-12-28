@@ -24,6 +24,23 @@ public class RegisterController {
         this.registerService = registerService;
     }
 
+    /**
+     * 用户注册接口
+     * @param role
+     * @param phoneNumber
+     * @param password
+     * @param email
+     * @param userName
+     * @param sex
+     * @param birthday
+     * @param subject
+     * @param grader
+     * @param qqNumber
+     * @param wechatNumber
+     * @param signature
+     * @return
+     * @throws RegisterException
+     */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseInfo register(@RequestParam("role") int role, @RequestParam("phoneNumber") long phoneNumber,
                                  @RequestParam("password") String password, @RequestParam("email") String email,

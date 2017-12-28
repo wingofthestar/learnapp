@@ -26,6 +26,11 @@ public class InformationController {
         this.informationService = informationService;
     }
 
+    /**
+     * 根据用户id获取用户的信息
+     * @param userInfoId 用户唯一标识ID
+     * @return
+     */
     @RequestMapping(value = "/get/userInfo/{userInfoId}")
     public Map getUserInfo(@PathVariable String userInfoId){
         Map userInfoMap = new HashMap();
@@ -35,6 +40,21 @@ public class InformationController {
         return userInfoMap;
     }
 
+    /**
+     * 更新用户信息接口
+     * @param userInfoId 用户唯一标识id
+     * @param userName 用户名
+     * @param sex 性别
+     * @param birthday 生日
+     * @param grade 年级
+     * @param qqNumber qq号
+     * @param wechatNumber 微信号
+     * @param signature 个性签名
+     * @param userPic 用户头像
+     * @param subject 老师的科目
+     * @return
+     * @throws RegisterException
+     */
     @RequestMapping(value = "/update/userInfo/{userInfoId}")
     public ResponseInfo updateUserInfo(@PathVariable String userInfoId,
                                        @RequestParam(value = "userName", required = false) String userName,

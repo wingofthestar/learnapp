@@ -37,7 +37,7 @@ public class UserInfo {
     @OneToOne(mappedBy = "userInfo")
     @JsonIgnore
     private Admin admin;
-    @OneToMany(mappedBy = "userInfo")
+    @ManyToMany(mappedBy = "userInfos")
     @JsonIgnore
     private Collection<QuestionInfo> questionInfos;
 

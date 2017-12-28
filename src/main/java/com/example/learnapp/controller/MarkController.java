@@ -16,6 +16,12 @@ public class MarkController {
         this.markService = markService;
     }
 
+    /**
+     * 学生给回答问题的老师评分接口
+     * @param userInfoId 用户唯一标识ID（这里标记老师）
+     * @param point 学生评分的分数
+     * @return
+     */
     @PostMapping("/mark")
     public ResponseInfo giveMark(@RequestParam("userInfoId") String userInfoId,
                                  @RequestParam("point") int point){

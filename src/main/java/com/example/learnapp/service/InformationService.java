@@ -7,6 +7,8 @@ import com.example.learnapp.repository.RegisterInfoRepository;
 import com.example.learnapp.repository.TeacherRepository;
 import com.example.learnapp.vo.UserVo;
 import com.example.learnapp.repository.UserInfoRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.Date;
 
 @Service
 public class InformationService {
+    private static final Logger logger = LoggerFactory.getLogger(InformationService.class);
     private UserInfoRepository userInfoRepository;
     private RegisterInfoRepository registerInfoRepository;
     private TeacherRepository teacherRepository;
@@ -44,6 +47,19 @@ public class InformationService {
         return userVo;
     }
 
+    /**
+     * 更新用户信息
+     * @param userInfoId
+     * @param userName
+     * @param sex
+     * @param birthday
+     * @param grade
+     * @param qqNumber
+     * @param wechatNumber
+     * @param signature
+     * @param userPic
+     * @param subject
+     */
     @Transactional
     public void updateInformation(String userInfoId, String userName, String sex, Date birthday,
                                   String grade, String qqNumber, String wechatNumber, String signature,
@@ -84,6 +100,7 @@ public class InformationService {
             teacherRepository.save(teacher);
         }
         userInfoRepository.save(userInfo);
+        logger.info("更新用户:" + userInfoId + "成功");
     }
 
 }

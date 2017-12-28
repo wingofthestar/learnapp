@@ -20,6 +20,15 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
+    /**
+     * 学生提问接口
+     * @param questionPic
+     * @param subject
+     * @param questionTitle
+     * @param questionContent
+     * @param userInfoId
+     * @return
+     */
     @PostMapping(value = "/askQuestion")
     public ResponseInfo saveQuestion(@RequestParam(value = "pic", required = false) String questionPic,
                                      @RequestParam("subject") String subject,
@@ -31,12 +40,23 @@ public class QuestionController {
         return new ResponseInfo(ResponseInfo.OK, "提问成功");
     }
 
+    /**
+     * 展示所有问题接口
+     * @return
+     */
     @RequestMapping(value = "/showAllQuestion")
     public List<QuestionInfo> showALLQuestion(){
         List<QuestionInfo> questionInfos =  questionService.showAllQuestion();
         return questionInfos;
     }
 
+
+    /**
+     * 根据老师的学科年级来展示问题列表
+     * @param userInfoId
+     * @return
+     * @throws GradeSwitchException
+     */
     @PostMapping(value = "/showQuestionBySubjectAndGrade/{userInfoId}")
     public List<QuestionVo> showQuestionBySubjectAndGrade(@PathVariable String userInfoId) throws GradeSwitchException {
         return questionService.showByGradeAndSubject(userInfoId);

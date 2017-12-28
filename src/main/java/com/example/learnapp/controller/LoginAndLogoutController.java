@@ -1,15 +1,12 @@
 package com.example.learnapp.controller;
 
 import com.example.learnapp.entity.RegisterInfo;
-import com.example.learnapp.entity.UserInfo;
 import com.example.learnapp.exception.LoginException;
 import com.example.learnapp.service.LoginAndLogoutService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +19,14 @@ public class LoginAndLogoutController {
         this.loginAndLogoutService = loginAndLogoutService;
     }
 
+    /**
+     * 用户登录接口
+     * @param phoneNumber
+     * @param password
+     * @param request
+     * @return
+     * @throws LoginException
+     */
     @RequestMapping(value = "/login")
     public Map login(@RequestParam("phoneNumber") Long phoneNumber, @RequestParam("password") String password, HttpServletRequest request) throws LoginException {
         String ip = request.getRemoteAddr();

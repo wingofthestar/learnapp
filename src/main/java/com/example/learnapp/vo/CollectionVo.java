@@ -1,39 +1,15 @@
-package com.example.learnapp.entity;
+package com.example.learnapp.vo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
 
-@Entity
-@Table(name = "question_info")
-public class QuestionInfo {
-    @Id
-    @GeneratedValue(generator = "uuidGenerator")
-    @GenericGenerator(name = "uuidGenerator", strategy = "uuid")
+public class CollectionVo {
     private String questionInfoId;
     private String questionTitle;
     private String questionContent;
     private String questionPic;
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
-    @OneToOne(mappedBy = "questionInfo")
-    @JsonIgnore
-    private AnswerInfo answerInfo;
-    @Temporal(TemporalType.DATE)
+    private String questionerUserInfoId;
     private Date questionDate;
     private String subject;
-
-    /**
-     * 关联UserInfo表用来做收藏
-     */
-    @ManyToMany
-    @JoinTable(name = "user_Info_question_info", joinColumns = @JoinColumn(name = "user_info_id"), inverseJoinColumns = @JoinColumn(name = "question_info_id"))
-    @JsonIgnore
-    private Collection<UserInfo> userInfos;
 
     public String getQuestionInfoId() {
         return questionInfoId;
@@ -67,32 +43,16 @@ public class QuestionInfo {
         this.questionPic = questionPic;
     }
 
-    public Student getStudent() {
-        return student;
+    public String getQuestionerUserInfoId() {
+        return questionerUserInfoId;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public AnswerInfo getAnswerInfo() {
-        return answerInfo;
-    }
-
-    public void setAnswerInfo(AnswerInfo answerInfo) {
-        this.answerInfo = answerInfo;
+    public void setQuestionerUserInfoId(String questionerUserInfoId) {
+        this.questionerUserInfoId = questionerUserInfoId;
     }
 
     public Date getQuestionDate() {
         return questionDate;
-    }
-
-    public Collection<UserInfo> getUserInfos() {
-        return userInfos;
-    }
-
-    public void setUserInfos(Collection<UserInfo> userInfos) {
-        this.userInfos = userInfos;
     }
 
     public void setQuestionDate(Date questionDate) {
@@ -109,12 +69,12 @@ public class QuestionInfo {
 
     @Override
     public String toString() {
-        return "QuestionInfo{" +
+        return "CollectionVo{" +
                 "questionInfoId='" + questionInfoId + '\'' +
                 ", questionTitle='" + questionTitle + '\'' +
                 ", questionContent='" + questionContent + '\'' +
                 ", questionPic='" + questionPic + '\'' +
-                ", answerInfo=" + answerInfo +
+                ", questionerUserInfoId='" + questionerUserInfoId + '\'' +
                 ", questionDate=" + questionDate +
                 ", subject='" + subject + '\'' +
                 '}';
