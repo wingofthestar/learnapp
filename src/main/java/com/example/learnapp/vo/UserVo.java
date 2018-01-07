@@ -12,6 +12,7 @@ public class UserVo {
     private String wechatNumber;
     private String signature;
     private String subject;
+    private Integer mark;
 
     public String getUserInfoId() {
         return userInfoId;
@@ -85,9 +86,17 @@ public class UserVo {
         this.subject = subject;
     }
 
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
+    }
+
     @Override
     public String toString() {
-        return "UserView{" +
+        return "UserVo{" +
                 "userInfoId='" + userInfoId + '\'' +
                 ", userName='" + userName + '\'' +
                 ", sex='" + sex + '\'' +
@@ -97,6 +106,7 @@ public class UserVo {
                 ", wechatNumber='" + wechatNumber + '\'' +
                 ", signature='" + signature + '\'' +
                 ", subject='" + subject + '\'' +
+                ", mark=" + mark +
                 '}';
     }
 }

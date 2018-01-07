@@ -34,7 +34,7 @@ public class RegisterController {
      * @param sex
      * @param birthday
      * @param subject
-     * @param grader
+     * @param grade
      * @param qqNumber
      * @param wechatNumber
      * @param signature
@@ -47,7 +47,7 @@ public class RegisterController {
                                  @RequestParam("userName") String userName, @RequestParam("sex") String sex,
                                  @RequestParam("birthday") String birthday,
                                  @RequestParam(value = "subject", required = false) String subject,
-                                 @RequestParam("grader") String grader,
+                                 @RequestParam("grade") String grade,
                                  @RequestParam(value = "qqNumber", required = false) String qqNumber,
                                  @RequestParam(value = "wechatNumber", required = false) String wechatNumber,
                                  @RequestParam(value = "signature", required = false) String signature)
@@ -67,7 +67,7 @@ public class RegisterController {
 
         RegisterInfo registerInfo = new RegisterInfo(phoneNumber, password, email, role);
         String pic= "";
-        UserInfo userInfo = new UserInfo(userName, sex, date, grader, qqNumber, wechatNumber, signature, pic);
+        UserInfo userInfo = new UserInfo(userName, sex, date, grade, qqNumber, wechatNumber, signature, pic);
         userInfo.setRegisterInfo(registerInfo);
 
         registerService.register(registerInfo, userInfo, subject);

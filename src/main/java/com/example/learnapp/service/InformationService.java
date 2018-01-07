@@ -40,9 +40,9 @@ public class InformationService {
         UserInfo userInfo = userInfoRepository.findByUserInfoId(userInfoId);
         UserVo userVo = new UserVo();
         BeanUtils.copyProperties(userInfo, userVo);
-        if (userInfo.getRegisterInfo().getRole() != 1){
+        if (userInfo.getRegisterInfo().getRole() == 2){
             userVo.setSubject(userInfo.getTeacher().getSubject());
-
+            userVo.setMark(userInfo.getTeacher().getPoints());
         }
         return userVo;
     }
