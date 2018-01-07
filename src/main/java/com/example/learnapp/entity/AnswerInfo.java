@@ -1,6 +1,5 @@
 package com.example.learnapp.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -19,6 +18,7 @@ public class AnswerInfo {
     private Teacher teacher;
     @Temporal(TemporalType.DATE)
     private Date answerDate;
+    private String answerPic;
     @OneToOne
     @JoinColumn(name = "question_info_id")
     private QuestionInfo questionInfo;
@@ -63,12 +63,22 @@ public class AnswerInfo {
         this.questionInfo = questionInfo;
     }
 
+    public String getAnswerPic() {
+        return answerPic;
+    }
+
+    public void setAnswerPic(String answerPic) {
+        this.answerPic = answerPic;
+    }
+
     @Override
     public String toString() {
         return "AnswerInfo{" +
                 "answerInfoId='" + answerInfoId + '\'' +
                 ", answerContent='" + answerContent + '\'' +
+                ", teacher=" + teacher +
                 ", answerDate=" + answerDate +
+                ", answerPic='" + answerPic + '\'' +
                 '}';
     }
 }

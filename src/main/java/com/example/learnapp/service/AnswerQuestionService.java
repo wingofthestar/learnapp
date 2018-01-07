@@ -47,14 +47,19 @@ public class AnswerQuestionService {
     }
 
     @Transactional
-    public void answerQuestion(String questionInfoId, String content, String userInfoId){
+    public void answerQuestion(String questionInfoId, String content, String userInfoId, String answerPic){
         AnswerInfo answerInfo = new AnswerInfo();
         answerInfo.setAnswerContent(content);
+        answerInfo.setAnswerPic(answerPic);
+
         QuestionInfo questionInfo = questionInfoRepository.findByQuestionInfoId(questionInfoId);
         answerInfo.setQuestionInfo(questionInfo);
+
+        //为了取出教师的内容，教师的回答问题数+1
         UserInfo userInfo = userInfoRepository.findByUserInfoId(userInfoId);
         Teacher teacher = userInfo.getTeacher();
         teacher.setAnswerNumber(teacher.getAnswerNumber()+1);
+
         answerInfo.setTeacher(teacher);
         answerInfo.setAnswerDate(new Date());
         answerInfoRepository.save(answerInfo);

@@ -8,6 +8,7 @@ public class AnswerVo {
     private String answerUserInfoId;
     private String answerUserName;
     private Date answerDate;
+    private String answerPic;
     private QuestionVo questionVo;
     private String subject;
 
@@ -65,5 +66,13 @@ public class AnswerVo {
 
     public void setQuestionVo(QuestionVo questionVo) {
         this.questionVo = questionVo;
+    }
+
+    public String getAnswerPic() {
+        return answerPic;
+    }
+
+    public void setAnswerPic(String answerPic) {
+        this.answerPic = answerPic;
     }
 }

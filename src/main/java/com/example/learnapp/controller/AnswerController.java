@@ -30,8 +30,9 @@ public class AnswerController {
     @PostMapping(value = "/answer")
     public ResponseInfo answerQuestion(@RequestParam("questionInfoId") String questionInfoId,
                                        @RequestParam("content") String content,
-                                       @RequestParam("userInfoId") String userInfoId){
-        answerQuestionService.answerQuestion(questionInfoId, content, userInfoId);
+                                       @RequestParam("userInfoId") String userInfoId,
+                                       @RequestParam(value = "answerPic", required = false) String answerPic){
+        answerQuestionService.answerQuestion(questionInfoId, content, userInfoId, answerPic);
         return new ResponseInfo(ResponseInfo.OK, "回答问题成功");
     }
 
