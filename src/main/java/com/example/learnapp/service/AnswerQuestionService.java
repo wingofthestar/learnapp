@@ -80,7 +80,7 @@ public class AnswerQuestionService {
             if (answerInfo != null){
                 AnswerVo answerVo = new AnswerVo();
                 BeanUtils.copyProperties(answerInfo, answerVo);
-                answerVo.setAnswerUserInfoId(answerInfo.getTeacher().getTeacherId());
+                answerVo.setAnswerUserInfoId(answerInfo.getTeacher().getUserInfo().getUserInfoId());
                 answerVo.setAnswerUserName(answerInfo.getTeacher().getUserInfo().getUserName());
                 answerVo.setSubject(answerInfo.getTeacher().getSubject());
                 QuestionVo questionVo = new QuestionVo();
@@ -104,7 +104,7 @@ public class AnswerQuestionService {
         for(AnswerInfo answerInfo: answerInfos){
             AnswerVo answerVo = new AnswerVo();
             BeanUtils.copyProperties(answerInfo, answerVo);
-            answerVo.setAnswerUserInfoId(answerInfo.getTeacher().getTeacherId());
+            answerVo.setAnswerUserInfoId(answerInfo.getTeacher().getUserInfo().getUserInfoId());
             answerVo.setAnswerUserName(answerInfo.getTeacher().getUserInfo().getUserName());
             answerVo.setSubject(answerInfo.getTeacher().getSubject());
             QuestionVo questionVo = new QuestionVo();
