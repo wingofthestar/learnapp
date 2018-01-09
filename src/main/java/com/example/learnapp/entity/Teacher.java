@@ -16,7 +16,7 @@ public class Teacher {
     @Column(name = "points")
     private Integer points = 0;
     private Integer answerNumber = 0;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
     @OneToMany(mappedBy = "teacher") //关系反方

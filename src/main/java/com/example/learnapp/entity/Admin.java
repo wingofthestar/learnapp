@@ -10,7 +10,7 @@ public class Admin {
     @GeneratedValue(generator = "uuidGenerator")
     @GenericGenerator(name = "uuidGenerator", strategy = "uuid")
     private String adminId;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 
